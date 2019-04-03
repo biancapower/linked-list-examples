@@ -16,20 +16,59 @@ class Queue {
 
     constructor() {
         this.qLength = 0;
-        this.firstItem = undefined;
+        this.first = null;
+        this.last = null;
     }
 
-    add(item) {
+    add(value) {
+
         this.qLength++;
-        this.firstItem = item;
+
+        // imagine our queue is currently   FIRST -> A -> B -> C -> LAST
+
+        // create a new item; the "old" last item is before this one
+        const newItem = {
+            //before: LAST,
+            before: this.last,
+            after: null,
+            value: value,
+        };
+
+
+        if (this.last === null) { // if the list is empty, the new item is the first
+            this.first = newItem;
+
+        } else { // otherwise the new item occurs after the "old" last item
+
+            // LAST is old last item
+            // newItem is new last item
+            // LAST.after = something...
+            // the real name of LAST is this.last
+
+            this.last.after = newItem;
+        }
+
+        // the actual last item is now the new item
+        this.last = newItem;
     }
 
     remove() {
-        if (this.qLength === 0) {
+        const firstItem = this.first;
+
+        if (firstItem === null) {
             return undefined;
         }
+
+        // make this.first point to second item
+
+        this.first = firstItem.after;
+        if (this.first === null) {
+            this.last = null;
+        }
+
         this.qLength--;
-        return this.firstItem;
+
+        return firstItem.value;
     }
 
     length() {
@@ -39,3 +78,4 @@ class Queue {
 
 
 module.exports = Queue;
+

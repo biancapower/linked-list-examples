@@ -127,6 +127,6 @@ describe("remove items in FIFO order", () => {
         }
         expect(q.remove()).toBe(undefined);
 
-    }
+    });
 
 });
