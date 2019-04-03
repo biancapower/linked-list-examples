@@ -16,10 +16,12 @@ class Queue {
 
     constructor() {
         this.qLength = 0;
+        this.firstItem = undefined;
     }
 
     add(item) {
         this.qLength++;
+        this.firstItem = item;
     }
 
     remove() {
@@ -27,6 +29,7 @@ class Queue {
             return undefined;
         }
         this.qLength--;
+        return this.firstItem;
     }
 
     length() {
