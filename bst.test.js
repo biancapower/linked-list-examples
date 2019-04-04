@@ -42,8 +42,8 @@ describe("range queries with no results", () => {
     test("range query of empty tree", () => {
         const t = new BST();
 
-        expect(t.range(0, 50)).toBe([]);
-        expect(t.range('myrange', 'z')).toBe([]);
+        expect(t.range(0, 50)).toEqual([]);
+        expect(t.range('myrange', 'z')).toEqual([]);
     });
 
     test("ranges with empty results", () => {
@@ -56,26 +56,29 @@ describe("range queries with no results", () => {
         t.insert(-10, 'defg');
 
         // must be empty no matter what is in BST
-        expect(t.range(0, -1)).toBe([]);
-        expect(t.range(0, -1)).toBe([]);
+        expect(t.range(0, -1)).toEqual([]);
+        expect(t.range(0, -1)).toEqual([]);
 
         // will be empty in this case
-        expect(t.range('m', 'mx')).toBe([]);
+        expect(t.range('m', 'mx')).toEqual([]);
 
     });
+});
+describe("range queries with some results", () => {
+
     test("ranges with a leaf-only result", () => {
         const t = new BST();
 
         // root node
         t.insert('test', 5);
-        expect(t.range('a', 'z')).toBe([5]);
+        expect(t.range('a', 'z')).toEqual([5]);
 
         // other leaves
         t.insert('test2', 2);
         t.insert('test3', 3);
         t.insert('test7', 7);
         t.insert('test8', 8);
-        expect(t.range('test2', 'test3')).toBe(['test2', 'test3']);
+        expect(t.range('test2', 'test3')).toEqual([2, 3]);
     });
 
     test("ranges with complex results", () => {
@@ -86,8 +89,8 @@ describe("range queries with no results", () => {
         t.insert('test3', 3);
         t.insert('test7', 7);
         t.insert('test8', 8);
-        expect(t.range('test2', 'test7')).toBe(['test2', 'test3', 'test5', 'test7']);
-        expect(t.range('test3', 'test5')).toBe(['test3', 'test5']);
+        expect(t.range('test2', 'test7')).toEqual([2, 3, 5, 7]);
+        expect(t.range('test3', 'test5')).toEqual([3, 5]);
 
 
     });
