@@ -11,7 +11,7 @@ describe("test the length method", () => {
 
     test("add increases length", () => {
         q.add('test');
-        expect(q.length()).toBe(1);
+        expect(q.length()).toBe(5);
         q.add('test');
         expect(q.length()).toBe(2);
         q.add('test');
