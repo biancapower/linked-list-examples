@@ -7,7 +7,9 @@
  *   insert(k, v)  inserts key k with value v if not already there
  *   lookup(k)     returns value associated with key k
  *                 or null if not found
- *   range(k1, k2)  returns an array of all values between k1 and k2
+ *   range(k1, k2) returns an array of all values between k1 and k2
+ *                 returns [] if no results
+ *                 (inclusive of k1 and k2)
  *   remove(k)     removes key k and associated value
  */
 
