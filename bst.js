@@ -54,11 +54,18 @@ class BST {
         if (this.root === null) {
             return null;
         } else {
-            if (key === this.root.key) {
-                return this.root.value;
-            } else {
-                return null;
+            let currentNode = this.root;
+            while (currentNode !== null) {
+                if (key === currentNode.key) {
+                    return currentNode.value;
+                } else if (key < currentNode.key) {
+                    currentNode = currentNode.left;
+                } else {
+                    currentNode = currentNode.right;
+                }
+
             }
+            return null;
         }
     }
 
